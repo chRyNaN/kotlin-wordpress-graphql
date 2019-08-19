@@ -316,4 +316,31 @@ class RootQueryBuilder : RootGraphQLQueryBuilder() {
             objectBuilder = UserRoleConnectionQueryBuilder(),
             objectFieldBuilder = builder
         )
+
+    fun theme(id: ID, builder: ThemeQueryBuilder.() -> Unit) =
+        gqlObject(
+            name = "theme",
+            parameters = listOf(gqlParam(name = "id", value = id)),
+            objectBuilder = ThemeQueryBuilder(),
+            objectFieldBuilder = builder
+        )
+
+    fun themes(
+        first: Int? = null,
+        last: Int? = null,
+        after: String? = null,
+        before: String? = null,
+        builder: ThemeConnectionQueryBuilder.() -> Unit
+    ) =
+        gqlObject(
+            name = "themes",
+            parameters = listOf(
+                gqlParam(name = "first", value = first),
+                gqlParam(name = "last", value = last),
+                gqlParam(name = "after", value = after),
+                gqlParam(name = "before", value = before)
+            ),
+            objectBuilder = ThemeConnectionQueryBuilder(),
+            objectFieldBuilder = builder
+        )
 }
