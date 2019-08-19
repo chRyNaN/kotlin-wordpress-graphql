@@ -1,0 +1,3 @@
+rootProject.name = 'wordpress-graphql'
+
+enableFeaturePreview('GRADLE_METADATA')
