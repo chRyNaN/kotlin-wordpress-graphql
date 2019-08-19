@@ -289,4 +289,31 @@ class RootQueryBuilder : RootGraphQLQueryBuilder() {
             objectBuilder = UserQueryBuilder(),
             objectFieldBuilder = builder
         )
+
+    fun userRole(id: ID, builder: UserRoleQueryBuilder.() -> Unit) =
+        gqlObject(
+            name = "userRole",
+            parameters = listOf(gqlParam(name = "id", value = id)),
+            objectBuilder = UserRoleQueryBuilder(),
+            objectFieldBuilder = builder
+        )
+
+    fun userRoles(
+        first: Int? = null,
+        last: Int? = null,
+        after: String? = null,
+        before: String? = null,
+        builder: UserRoleConnectionQueryBuilder.() -> Unit
+    ) =
+        gqlObject(
+            name = "userRoles",
+            parameters = listOf(
+                gqlParam(name = "first", value = first),
+                gqlParam(name = "last", value = last),
+                gqlParam(name = "after", value = after),
+                gqlParam(name = "before", value = before)
+            ),
+            objectBuilder = UserRoleConnectionQueryBuilder(),
+            objectFieldBuilder = builder
+        )
 }
